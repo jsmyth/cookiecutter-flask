@@ -1,12 +1,11 @@
 {
-  "full_name": "Steven Loria",
-  "email": "sloria1@gmail.com",
-  "github_username": "sloria",
+  "full_name": "Jim Smyth",
+  "email": "email@example.com",
   "project_name": "My Flask App",
-  "app_name": "{{cookiecutter.project_name.lower().replace('-', '_').replace(' ', '_')}}",
   "project_short_description": "A flasky app.",
-  "use_pipenv": ["no", "yes"],
-  "python_version": ["3.8", "3.7", "3.6"],
-  "node_version": ["12", "10"],
-  "use_heroku": ["no", "yes"]
+  "app_name": "{{cookiecutter.project_name.lower().replace('-', '_').replace(' ', '_')}}",
+  "github_username": "",
+  "github_repo": "{{cookiecutter.app_name}}",
+  "python_version": "3.8",
+  "node_version": "12"
 }
