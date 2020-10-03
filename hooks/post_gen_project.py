@@ -81,6 +81,7 @@ def yes_or_no(question):
 
 if __name__ == "__main__":
     github_username = "{{cookiecutter.github_username}}"
+    log_info(json.dumps(cookiecutter, indent=4))
     repo_name = "{{cookiecutter.github_repo}}"
     project_short_description = "{{cookiecutter.project_short_description}}"
 
@@ -112,8 +113,27 @@ if __name__ == "__main__":
     log_check(f'Push to Github')
     push_branch_to_github()
 
+    log_check('Heroku container login')
+    run(["heroku", "container:login"])
+
+    log_launch('Heroku Create')
+    create_output = run(["heroku", "create", "-t", "learnsecurely"])
+    log_check(create_output)
+
+    log_launch('Heroku Container Push')
+    push_output = run(["heroku", "container:push", "web"])
+    log_check(push_output)
+
+    log_launch('Heroku Release')
+    release_output = run(["heroku", "container:release", "web"])
+    log_check('Heroku Container Released')
+    heroku_info_output = run(["heroku", "info"])
+
     horizontal_rule()
     log_info(f'A new repo named {repo_name} has been created')
     log_blank_bright(f'Links:')
     log_link("Git URL:", repo_git_url)
     log_link("Web URL:", repo_web_url)
+
+    horizontal_rule()
+    log_info(heroku_info_output)
