@@ -81,7 +81,6 @@ def yes_or_no(question):
 
 if __name__ == "__main__":
     github_username = "{{cookiecutter.github_username}}"
-    log_info(json.dumps(cookiecutter, indent=4))
     repo_name = "{{cookiecutter.github_repo}}"
     project_short_description = "{{cookiecutter.project_short_description}}"
 
